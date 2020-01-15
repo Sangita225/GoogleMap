@@ -3,6 +3,7 @@ package com.example.googlemap;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.hardware.Camera;
+import android.location.Location;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity implements OnMapReadyCallback {
+    Location currentlocation;
 
     private GoogleMap mMap;
     private AutoCompleteTextView etCity;
@@ -101,11 +103,16 @@ public class SearchActivity extends AppCompatActivity implements OnMapReadyCallb
     public void onMapReady(GoogleMap googleMap) {
 
         mMap=googleMap;
+        LatLng softwarica=new LatLng(27.706195,85.3300396);
+        mMap.addMarker(new MarkerOptions().position(softwarica).title( "Marker in softwarica"));
         center= CameraUpdateFactory.newLatLng(new LatLng(27.706195, 85.3300396));
         zoom= CameraUpdateFactory.zoomTo(15);
         mMap.moveCamera(center);
         mMap.animateCamera(zoom);
         mMap.getUiSettings().setZoomControlsEnabled(true);
+
+
+
 
     }
 
